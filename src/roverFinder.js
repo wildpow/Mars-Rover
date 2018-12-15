@@ -1,4 +1,4 @@
-const mars = (board, starting, movement) => {
+const roverFinder = (board, starting, movement) => {
   const [maxX, maxY] = board;
   const [startingX, StartingY, direction] = starting;
   let currentDirection = direction;
@@ -71,7 +71,6 @@ const mars = (board, starting, movement) => {
       break;
   }
   if (lostReception !== 0) {
-    console.log(lostReception);
     if (currentX <= maxX || currentY <= maxY) {
       console.log(
         `Lost reception with your rover ${lostReception} time${
@@ -88,10 +87,12 @@ const mars = (board, starting, movement) => {
   } else {
     console.log(currentX, currentY, currentDirection);
   }
+  const finalResaults = [currentX, currentY, currentDirection];
+  return finalResaults;
 };
 
 // console.log(mars([5, 5], [1, 2, 'N'], ['L', 'M', 'L', 'M', 'L', 'M', 'L', 'M', 'M']));
 // console.log(mars([5, 5], [3, 3, 'E'], ['M', 'M', 'R', 'M', 'M', 'R', 'M', 'R', 'R', 'M']));
 // console.log(mars([0, 0], [0, 0, 'N'], ['M']));
-console.log(mars([0, 0], [0, 0, 'N'], ['M', 'R', 'R', 'M']));
-console.log(mars([0, 0], [0, 0, 'N'], ['M', 'R', 'R', 'M', 'M', 'R', 'R', 'M']));
+console.log(roverFinder([0, 0], [0, 0, 'N'], ['M', 'R', 'R', 'M']));
+console.log(roverFinder([0, 0], [0, 0, 'N'], ['M', 'R', 'R', 'M', 'M', 'R', 'R', 'M']));
