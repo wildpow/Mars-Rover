@@ -2,9 +2,13 @@
 /*
 eslint no-console: [0] 
 */
+
 const inquirer = require('inquirer');
 const { from } = require('rxjs');
 const chalk = require('chalk');
+const uiElements = require('./uiElements');
+const roverFinder = require('./roverFinder');
+const responses = require('./responses');
 
 const finalAnswers = {};
 
@@ -38,7 +42,6 @@ const saveRoverMove = (val, roverNumber) => {
     finalAnswers.questionCount = 5;
   }
 };
-const warning = chalk.bold.magenta;
 const error = chalk.bold.red;
 
 const questions = [
@@ -214,89 +217,30 @@ const questions = [
     }
   }
 ];
-
+uiElements.logo();
+uiElements.description();
+uiElements.step1();
 const observable = from(questions);
 
 inquirer.prompt(observable).ui.process.subscribe(
-  ans => {
-    const answerPrompt = val => {
-      if (val.questionCount === 1) {
-        console.log(val.questionCount);
-        console.log(
-          `X and Y cordinates have been set for rover area to [X: ${val.board[0]} and Y: ${
-            val.board[1]
-          }]\n`
-        );
-      } else if (val.questionCount === 2) {
-        console.log(val.questionCount);
-        console.log(
-          `Starting position cordinates have been set for rover 1 to [X: ${val.roverPos1[0]} Y: ${
-            val.roverPos1[1]
-          } facing: ${val.roverPos1[2]}]\n`
-        );
-        console.log(
-          chalk.bold.yellow(
-            `${`*********First rover is ready to be deployed and awaiting commands**********`.toUpperCase()}`
-          )
-        );
-        console.log(
-          chalk.bold(
-            `[Rover movement commands]\n L: Turn rover left 90 degrees\n R: Turn rover right 90 degrees\n M: Move one space`
-          )
-        );
-        console.log(`\nThe Rover understands these commands in a continuous string Like: [MMRMMRMRRM]\n ${warning(
-          `If the rover moves out of the set area we may loose contact with it, so be careful`
-        )}\n
-        `);
-      } else if (val.questionCount === 3) {
-        console.log(val.questionCount);
-        console.log(
-          chalk.bold.yellow(
-            `*********Rover One movement commands have been sent: ${val.roverMove1}*********\n`
-          )
-        );
-        console.log(`Let's setup Rover two while we wait for an reply transmission.\n`);
-      } else if (val.questionCount === 4) {
-        console.log(val.questionCount);
-        console.log(
-          `Starting position cordinates have been set for rover 2 to [X: ${val.roverPos2[0]} Y: ${
-            val.roverPos2[1]
-          } facing: ${val.roverPos2[2]}]\n`
-        );
-        console.log(
-          chalk.bold.yellow(
-            `${`*********Second rover is ready to be deployed and awaiting commands**********`.toUpperCase()}`
-          )
-        );
-        console.log(
-          chalk.bold(
-            `[Rover movement commands]\n L: Turn rover left 90 degrees\n R: Turn rover right 90 degrees\n M: Move one space`
-          )
-        );
-        console.log(`\nThe Rover understands these commands in a continuous string Like: [MMRMMRMRRM]\n ${warning(
-          `If the rover moves out of the set area we may loose contact with it, so be careful`
-        )}\n
-        `);
-      } else if (val.questionCount === 5) {
-        console.log(val.questionCount);
-        console.log(
-          chalk.bold.yellow(
-            `*********Rover Two movement commands have been sent: ${val.roverMove2}*********\n`
-          )
-        );
-      }
-      return null;
-    };
-    answerPrompt(finalAnswers);
+  () => {
+    responses.answerPrompt(finalAnswers);
   },
-  function(err) {
+  err => {
     console.log('Error: ', err);
   },
-  function() {
+  () => {
+    const rover1 = roverFinder
+      .roverFinder(finalAnswers.board, finalAnswers.roverPos1, finalAnswers.roverMove1)
+      .join(' ');
+    const rover2 = roverFinder
+      .roverFinder(finalAnswers.board, finalAnswers.roverPos2, finalAnswers.roverMove2)
+      .join(' ');
     console.log(
-      `roverP1: ${finalAnswers.roverPos1} roverP2: ${finalAnswers.roverPos2} board: ${
-        finalAnswers.board
-      } rover1move: ${finalAnswers.roverMove1} rover2move: ${finalAnswers.roverMove2}`
+      `${chalk.bold.green('Your Final Posistion of Rover One is')} ${chalk.bold.red(rover1)}`
+    );
+    console.log(
+      `${chalk.bold.green('Your Final Posistion of Rover Two is')} ${chalk.bold.red(rover2)}`
     );
   }
 );
