@@ -230,12 +230,16 @@ inquirer.prompt(observable).ui.process.subscribe(
     console.log('Error: ', err);
   },
   () => {
-    const rover1 = roverFinder
-      .roverFinder(finalAnswers.board, finalAnswers.roverPos1, finalAnswers.roverMove1)
-      .join(' ');
-    const rover2 = roverFinder
-      .roverFinder(finalAnswers.board, finalAnswers.roverPos2, finalAnswers.roverMove2)
-      .join(' ');
+    const rover1 = roverFinder(
+      finalAnswers.board,
+      finalAnswers.roverPos1,
+      finalAnswers.roverMove1
+    ).join(' ');
+    const rover2 = roverFinder(
+      finalAnswers.board,
+      finalAnswers.roverPos2,
+      finalAnswers.roverMove2
+    ).join(' ');
     console.log(
       `${chalk.bold.green('Your Final Posistion of Rover One is')} ${chalk.bold.red(rover1)}`
     );
