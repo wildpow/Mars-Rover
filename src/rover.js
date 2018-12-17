@@ -230,21 +230,26 @@ inquirer.prompt(observable).ui.process.subscribe(
     console.log('Error: ', err);
   },
   () => {
-    const rover1 = roverFinder(
-      finalAnswers.board,
-      finalAnswers.roverPos1,
-      finalAnswers.roverMove1
-    ).join(' ');
-    const rover2 = roverFinder(
-      finalAnswers.board,
-      finalAnswers.roverPos2,
-      finalAnswers.roverMove2
-    ).join(' ');
-    console.log(
-      `${chalk.bold.green('Your Final Posistion of Rover One is')} ${chalk.bold.red(rover1)}`
-    );
-    console.log(
-      `${chalk.bold.green('Your Final Posistion of Rover Two is')} ${chalk.bold.red(rover2)}`
-    );
+    const rover1 = roverFinder(finalAnswers.board, finalAnswers.roverPos1, finalAnswers.roverMove1);
+    const rover2 = roverFinder(finalAnswers.board, finalAnswers.roverPos2, finalAnswers.roverMove2);
+    if (rover1) {
+      console.log(
+        `${chalk.bold.green('Your Final Posistion of Rover One is')} ${chalk.bold.yellow(
+          rover1.join(' ')
+        )}`
+      );
+    } else {
+      console.log(`${chalk.bold.red('We lost contact with Rover One')}`);
+    }
+    if (rover2) {
+      console.log(
+        `${chalk.bold.green('Your Final Posistion of Rover Two is')} ${chalk.bold.yellow(
+          rover2.join(' ')
+        )}`
+      );
+    } else {
+      console.log(`${chalk.bold.red('We lost contact with Rover Two')}`);
+    }
+    console.log(`${chalk.bold.green('Thank you for using Rover Simulator')}`);
   }
 );
