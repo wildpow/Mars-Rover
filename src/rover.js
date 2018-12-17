@@ -54,7 +54,9 @@ const questions = [
     type: 'input',
     name: 'board',
     message: `Please provide two numbers for the X and Y coordinates for the areas size (input format: ['number' 'number'] ) \n`,
-    default: () => '5 5', // default value if user presses enter to skip question
+    // default value if user presses enter to skip question
+    default: () => '5 5',
+    // filter() runs before validate()
     filter: val => val.trim().split(' '),
     // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
@@ -89,7 +91,9 @@ const questions = [
     name: 'roverOneStarting',
     type: 'input',
     message: `Please provide X and Y coordinates for rover starting point and cardinal direction for which direction the rover is facing.\n (input format: ['number' 'number', [letter: N E S W]]\n`,
-    default: () => '1 2 N', // default value if user presses enter to skip question
+    // default value if user presses enter to skip question
+    default: () => '1 2 N',
+    // filter() runs before validate()
     filter: answer =>
       answer
         .toUpperCase()
@@ -134,6 +138,7 @@ const questions = [
     message: `Please enter commands now:`,
     // default value if user presses enter to skip question
     default: () => 'LMLMLMLMM',
+    // default value if user presses enter to skip question
     filter: answer =>
       answer
         .toUpperCase()
@@ -162,8 +167,9 @@ const questions = [
     name: 'roverTwoStarting',
     // default value if user presses enter to skip question
     default: () => '3 3 E',
-    filter: val =>
-      val
+    // default value if user presses enter to skip question
+    filter: answer =>
+      answer
         .toUpperCase()
         .trim()
         .split(' '),
