@@ -8,7 +8,7 @@ const { from } = require('rxjs');
 const chalk = require('chalk');
 const uiElements = require('./uiElements');
 const roverFinder = require('./roverFinder');
-const responsePrompt = require('./responses');
+const { responsePrompt, resRoverStart } = require('./responses');
 
 const finalAnswers = {};
 
@@ -82,7 +82,6 @@ const questions = [
           `--[INVALID INPUT: ${y}]--\n X can not be bigger then Mar's diameter of 4222 miles.`
         );
       }
-
       saveBoard(answer);
       return true;
     }
@@ -101,32 +100,9 @@ const questions = [
         .split(' '),
     // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
-      const [x, y, d] = answer;
-      const startingX = parseInt(x, 10);
-      const startingY = parseInt(y, 10);
-
-      const directions = ['N', 'E', 'S', 'W'];
-
-      if (answer.length !== 3) {
-        return error(
-          `--[INVALID INPUT: ${answer}]-- Please provide X Y and either [N, E, S, W] for direction.`
-        );
-      } else if (Number.isNaN(startingX)) {
-        return error(`--[INVALID INPUT: ${x}]--\n X needs to be a number.`);
-      } else if (Number.isNaN(startingY)) {
-        return error(`--[INVALID INPUT: ${answer[1]}]--\n Y needs to be a number.`);
-      } else if (x < 0) {
-        return error(`--[INVALID INPUT: ${startingX}]-- X can not be a negitive number.`);
-      } else if (y < 0) {
-        return error(`--[INVALID INPUT: ${startingY}]-- Y can not be a negitive number.`);
-      } else if (finalAnswers.board[0] < startingX || finalAnswers.board[1] < startingY) {
-        return error(
-          `--[INVALID INPUT ${answer}]-- X or Y can't be greater then the area you setup of X: ${
-            finalAnswers.board[0]
-          } Y: ${finalAnswers.board[1]}`
-        );
-      } else if (!directions.includes(d)) {
-        return error(`--[INVALID INPUT]-- Direction needs to be either [N, E, S, W]`);
+      const response = resRoverStart(answer, finalAnswers);
+      if (response.type === 'error') {
+        return error(response.message);
       }
       saveRoverStart(answer, 1);
       return true;
@@ -175,32 +151,9 @@ const questions = [
         .split(' '),
     // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
-      const [x, y, d] = answer;
-      const startingX = parseInt(x, 10);
-      const startingY = parseInt(y, 10);
-
-      const directions = ['N', 'E', 'S', 'W'];
-
-      if (answer.length !== 3) {
-        return error(
-          `--[INVALID INPUT: ${answer}]-- Please provide X Y and either [N, E, S, W] for direction.`
-        );
-      } else if (Number.isNaN(startingX)) {
-        return error(`--[INVALID INPUT: ${x}]--\n X needs to be a number.`);
-      } else if (Number.isNaN(startingY)) {
-        return error(`--[INVALID INPUT: ${answer[1]}]--\n Y needs to be a number.`);
-      } else if (x < 0) {
-        return error(`--[INVALID INPUT: ${startingX}]-- X can not be a negitive number.`);
-      } else if (y < 0) {
-        return error(`--[INVALID INPUT: ${startingY}]-- Y can not be a negitive number.`);
-      } else if (finalAnswers.board[0] < startingX || finalAnswers.board[1] < startingY) {
-        return error(
-          `--[INVALID INPUT ${answer}]-- X or Y can't be greater then the area you setup of X: ${
-            finalAnswers.board[0]
-          } Y: ${finalAnswers.board[1]}`
-        );
-      } else if (!directions.includes(d)) {
-        return error(`--[INVALID INPUT]-- Direction needs to be either [N, E, S, W]`);
+      const response = resRoverStart(answer, finalAnswers);
+      if (response.type === 'error') {
+        return error(response.message);
       }
       saveRoverStart(answer, 2);
       return true;
