@@ -1,10 +1,13 @@
-// All input if validated and parsed by the CLI in rover.js
-// All this function does it return rover ending posistion or return false
-// if rover went off the defined grid
+const roverFinderUtils = require('./roverFinderUtils');
+
+// Inputs are already fomatted and parsed by the CLI
+// board = [number, number]
+// starting = [number, number, letter (either N, E, S, W)]
+// movement = [...letter (either M, L, R)]
 const roverFinder = (board, starting, movement) => {
   const [maxX, maxY] = board;
   let [currentX, currentY, direction] = starting;
-  let currentDirection = direction;
+  let currentDirection = roverFinderUtils.convertDirectionNum(direction);
 
   const checkOutOfBounds = () => {
     if (currentX > maxX || currentX < 0 || currentY > maxY || currentY < 0) {
@@ -13,25 +16,6 @@ const roverFinder = (board, starting, movement) => {
     return true;
   };
 
-  const convertDirectionNum = () => {
-    switch (direction) {
-      case 'N':
-        currentDirection = 0;
-        break;
-      case 'E':
-        currentDirection = 1;
-        break;
-      case 'S':
-        currentDirection = 2;
-        break;
-      case 'W':
-        currentDirection = 3;
-        break;
-      default:
-        return 'Error';
-    }
-    return null;
-  };
   const updatePosition = () => {
     movement.forEach(move => {
       switch (move) {
@@ -57,29 +41,10 @@ const roverFinder = (board, starting, movement) => {
       }
     });
   };
-  const convertDirectionBack = () => {
-    switch (currentDirection % 4) {
-      case 0:
-        currentDirection = 'N';
-        break;
-      case 1:
-        currentDirection = 'E';
-        break;
-      case 2:
-        currentDirection = 'S';
-        break;
-      case 3:
-        currentDirection = 'W';
-        break;
-      default:
-        break;
-    }
-  };
 
-  convertDirectionNum();
   updatePosition();
-  convertDirectionBack();
-  const finalResaults = [currentX, currentY, currentDirection];
+  const finalDirection = roverFinderUtils.convertDirectionBack(currentDirection);
+  const finalResaults = [currentX, currentY, finalDirection];
 
   if (checkOutOfBounds()) {
     return finalResaults;
