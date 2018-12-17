@@ -12,6 +12,8 @@ const responses = require('./responses');
 
 const finalAnswers = {};
 
+// saveBoard is called at the end of the first question. It takes the answer array [x,y]
+// parses it and save it in the finalAnswers global object.
 const saveBoard = val => {
   let [x, y] = val;
   x = parseInt(x, 10);
@@ -21,8 +23,10 @@ const saveBoard = val => {
   return finalAnswers;
 };
 
-const saveRoverStart = (val, roverNumber) => {
-  let [x, y, d] = val;
+// saveRoverStart is called at the end of the two rover start questions. It takes the answer array,[x,y,d]
+// and a number that corresponds to the rover you're working with.
+const saveRoverStart = (answer, roverNumber) => {
+  let [x, y, d] = answer;
   x = parseInt(x, 10);
   y = parseInt(y, 10);
   if (roverNumber === 1) {
@@ -33,12 +37,13 @@ const saveRoverStart = (val, roverNumber) => {
     finalAnswers.questionCount = 4;
   }
 };
-const saveRoverMove = (val, roverNumber) => {
+// Saves answer in global oject and updates questionCount
+const saveRoverMove = (answer, roverNumber) => {
   if (roverNumber === 1) {
-    finalAnswers.roverMove1 = val;
+    finalAnswers.roverMove1 = answer;
     finalAnswers.questionCount = 3;
   } else if (roverNumber === 2) {
-    finalAnswers.roverMove2 = val;
+    finalAnswers.roverMove2 = answer;
     finalAnswers.questionCount = 5;
   }
 };
