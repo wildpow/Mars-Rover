@@ -1,4 +1,5 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/wildpow/Mars-Rover/badge.svg?targetFile=package.json)](https://snyk.io/test/github/wildpow/Mars-Rover?targetFile=package.json)
+[![Inline docs](http://inch-ci.org/github/wildpow/Mars-Rover.svg?branch=master)](http://inch-ci.org/github/wildpow/Mars-Rover)
 
 # Mars Rover
 

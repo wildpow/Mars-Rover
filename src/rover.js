@@ -8,7 +8,7 @@ const { from } = require('rxjs');
 const chalk = require('chalk');
 const uiElements = require('./uiElements');
 const roverFinder = require('./roverFinder');
-const responses = require('./responses');
+const responsePrompt = require('./responses');
 
 const finalAnswers = {};
 
@@ -244,7 +244,7 @@ const observable = from(questions);
 
 inquirer.prompt(observable).ui.process.subscribe(
   () => {
-    responses.answerPrompt(finalAnswers);
+    responsePrompt(finalAnswers);
   },
   err => {
     console.log('Error: ', err);
