@@ -76,4 +76,4 @@ If you've already download the project zip archive then you can unarchive it and
 
 This project uses [Cypress](https://www.cypress.io/) for testing. Either of these commands will start the test suite.
 
-- `yarn cypress:open` or `npm cypress:open`
+- `yarn test` or `npm test`
