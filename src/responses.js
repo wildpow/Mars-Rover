@@ -5,7 +5,7 @@ eslint no-console: [0]
 const chalk = require('chalk');
 
 const warning = chalk.bold.magenta;
-
+// takes in global answer object and check questionCount to give the correct response.
 module.exports = {
   answerPrompt: val => {
     if (val.questionCount === 1) {

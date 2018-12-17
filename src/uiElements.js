@@ -22,7 +22,6 @@ module.exports = {
     );
   },
   // for setup before questions
-
   description: () => {
     console.log(
       chalk.green(

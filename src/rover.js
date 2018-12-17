@@ -202,11 +202,12 @@ const questions = [
     name: 'moveRover2',
     message: `Please enter commands now:`,
     default: () => 'MMRMMRMRRM',
-    filter: val =>
-      val
+    filter: answer =>
+      answer
         .toUpperCase()
         .trim()
         .split(''),
+    // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
       const numberCheck = answer.every(item => {
         const convertedItem = parseInt(item, 10);

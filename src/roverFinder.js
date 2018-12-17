@@ -1,7 +1,6 @@
 // All input if validated and parsed by the CLI in rover.js
 // All this function does it return rover ending posistion or return false
 // if rover went off the defined grid
-
 const roverFinder = (board, starting, movement) => {
   const [maxX, maxY] = board;
   let [currentX, currentY, direction] = starting;
