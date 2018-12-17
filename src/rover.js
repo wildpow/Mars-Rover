@@ -138,7 +138,7 @@ const questions = [
     message: `Please enter commands now:`,
     // default value if user presses enter to skip question
     default: () => 'LMLMLMLMM',
-    // default value if user presses enter to skip question
+    // filter() runs before validate()
     filter: answer =>
       answer
         .toUpperCase()
@@ -167,7 +167,7 @@ const questions = [
     name: 'roverTwoStarting',
     // default value if user presses enter to skip question
     default: () => '3 3 E',
-    // default value if user presses enter to skip question
+    // filter() runs before validate()
     filter: answer =>
       answer
         .toUpperCase()
@@ -212,6 +212,7 @@ const questions = [
     message: `Please enter commands now:`,
     // default value if user presses enter to skip question
     default: () => 'MMRMMRMRRM',
+    // filter() runs before validate()
     filter: answer =>
       answer
         .toUpperCase()
