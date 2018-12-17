@@ -1,3 +1,5 @@
+[![Known Vulnerabilities](https://snyk.io/test/github/wildpow/Mars-Rover/badge.svg?targetFile=package.json)](https://snyk.io/test/github/wildpow/Mars-Rover?targetFile=package.json)
+
 # Mars Rover
 
 A Mars rover simulation. By giving simple text commands you can control the enviroment and the movements of a squad of Mars rovers.

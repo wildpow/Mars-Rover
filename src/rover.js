@@ -56,6 +56,7 @@ const questions = [
     message: `Please provide two numbers for the X and Y coordinates for the areas size (input format: ['number' 'number'] ) \n`,
     default: () => '5 5', // default value if user presses enter to skip question
     filter: val => val.trim().split(' '),
+    // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
       let [x, y] = answer;
       x = parseInt(x, 10);
@@ -131,7 +132,8 @@ const questions = [
     type: 'input',
     name: 'moveRover1',
     message: `Please enter commands now:`,
-    default: () => 'LMLMLMLMM', // default value if user presses enter to skip question
+    // default value if user presses enter to skip question
+    default: () => 'LMLMLMLMM',
     filter: answer =>
       answer
         .toUpperCase()
@@ -158,6 +160,7 @@ const questions = [
   {
     type: 'input',
     name: 'roverTwoStarting',
+    // default value if user presses enter to skip question
     default: () => '3 3 E',
     filter: val =>
       val
@@ -201,6 +204,7 @@ const questions = [
     type: 'input',
     name: 'moveRover2',
     message: `Please enter commands now:`,
+    // default value if user presses enter to skip question
     default: () => 'MMRMMRMRRM',
     filter: answer =>
       answer
