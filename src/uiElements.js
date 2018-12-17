@@ -1,6 +1,11 @@
+/*
+eslint no-console: [0] 
+*/
+
 const chalk = require('chalk');
 
 module.exports = {
+  // Function to display splash pages
   logo: () => {
     console.log(
       chalk.blue.bold(
@@ -16,6 +21,8 @@ module.exports = {
       )
     );
   },
+  // for setup before questions
+
   description: () => {
     console.log(
       chalk.green(
@@ -23,6 +30,7 @@ module.exports = {
       )
     );
   },
+  // for setup before questions
   step1: () => {
     console.log(
       chalk.underline.yellow('First we need to setup the area that our rovers will be working in.')

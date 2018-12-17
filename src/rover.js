@@ -54,7 +54,7 @@ const questions = [
     type: 'input',
     name: 'board',
     message: `Please provide two numbers for the X and Y coordinates for the areas size (input format: ['number' 'number'] ) \n`,
-    default: () => '5 5',
+    default: () => '5 5', // default value if user presses enter to skip question
     filter: val => val.trim().split(' '),
     validate: answer => {
       let [x, y] = answer;
@@ -88,12 +88,13 @@ const questions = [
     name: 'roverOneStarting',
     type: 'input',
     message: `Please provide X and Y coordinates for rover starting point and cardinal direction for which direction the rover is facing.\n (input format: ['number' 'number', [letter: N E S W]]\n`,
-    default: () => '1 2 N',
-    filter: val =>
-      val
+    default: () => '1 2 N', // default value if user presses enter to skip question
+    filter: answer =>
+      answer
         .toUpperCase()
         .trim()
         .split(' '),
+    // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
       const [x, y, d] = answer;
       const startingX = parseInt(x, 10);
@@ -130,12 +131,13 @@ const questions = [
     type: 'input',
     name: 'moveRover1',
     message: `Please enter commands now:`,
-    default: () => 'LMLMLMLMM',
-    filter: val =>
-      val
+    default: () => 'LMLMLMLMM', // default value if user presses enter to skip question
+    filter: answer =>
+      answer
         .toUpperCase()
         .trim()
         .split(''),
+    // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
       const numberCheck = answer.every(item => {
         const convertedItem = parseInt(item, 10);
@@ -162,6 +164,7 @@ const questions = [
         .toUpperCase()
         .trim()
         .split(' '),
+    // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
       const [x, y, d] = answer;
       const startingX = parseInt(x, 10);
