@@ -13,7 +13,7 @@
     "pretty-quick": "^1.8.0"
   },
   "scripts": {
-    "cypress:open": "cypress open",
+    "test": "cypress open",
     "start": "node src/rover.js"
   },
   "husky": {
