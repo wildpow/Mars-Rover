@@ -20,7 +20,7 @@ before_script:
   - yarn global add nyc
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+  - ./cc-test-reporter before-build --debug
 
 script:
   # start server in the background
@@ -34,7 +34,7 @@ script:
   # after all tests finish running we need
   # to kill all background jobs (like "npm start &")
   # this avoids flake in Travis jobs
-  # - kill $(jobs -p) || true
+  - kill $(jobs -p) || true
   # - ./cc-test-reporter upload-coverage --debug
   # - ./cc-test-reporter format-coverage --debug
   # - ./cc-test-reporter after-build
@@ -42,11 +42,11 @@ script:
 after_script:
   # - ./cc-test-reporter --debug
   # - cd coverage
-  - ./cc-test-reporter upload-coverage -i coverage/lcov.info
+  - cc-test-reporter after-build --debug -i coverage/lcov.info --exit-code $?
+  - ./cc-test-reporter upload-coverage --debug -i coverage/lcov.info
   - ./cc-test-reporter upload-coverage --debug
   # - ./cc-test-reporter format-coverage --input-type lcov
   # - ./cc-test-reporter --debug
   # - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
   # - ./cc-test-reporter after-build --debug
-  # - kill $(jobs -p) || true
   # - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
