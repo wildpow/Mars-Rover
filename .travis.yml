@@ -31,7 +31,6 @@ script:
   # this avoids flake in Travis jobs
   # - kill $(jobs -p) || true
   - ./cc-test-reporter upload-coverage --debug
-  - ./cc-test-reporter after-build --debug
 
 after_script:
   - ./cc-test-reporter after-build --debug
