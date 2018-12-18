@@ -16,7 +16,7 @@
     "test": "cypress open",
     "start": "node src/rover.js",
     "cy:verify": "cypress verify",
-    "cy:run": "cypress run --record"
+    "cy:run": "cypress run"
   },
   "husky": {
     "hooks": {
