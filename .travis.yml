@@ -6,10 +6,10 @@ cache:
     - node_modules
 
 before_script:
-  - yarn start --silent &
+  # - yarn start --silent &
 
 script:
   # run unit tests:
-  - yarn test
+  - yarn cy:run
   # run E2E tests:
-  - $(npm bin)/cypress run --record
+  # - $(npm bin)/cypress run --record
