@@ -29,7 +29,6 @@ script:
   # - npm run cy:run
   - nyc --reporter=lcov --reporter=text-lcov yarn run cy:run
   # - ./cc-test-reporter sum-coverage -o PATH coverage/lcov-report
-  - ./cc-test-reporter upload-coverage -i coverage/lcov.info
   # - ./cc-test-reporter format-coverage --input-type lcov
   # - ./cc-test-reporter --debug
   # after all tests finish running we need
@@ -43,8 +42,8 @@ script:
 after_script:
   # - ./cc-test-reporter --debug
   # - cd coverage
-  - ./cc-test-reporter sum-coverage -o PATH coverage/lcov.info
   - ./cc-test-reporter upload-coverage -i coverage/lcov.info
+  - ./cc-test-reporter upload-coverage --debug
   # - ./cc-test-reporter format-coverage --input-type lcov
   # - ./cc-test-reporter --debug
   # - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
