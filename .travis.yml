@@ -29,7 +29,8 @@ script:
   # after all tests finish running we need
   # to kill all background jobs (like "npm start &")
   # this avoids flake in Travis jobs
-  - kill $(jobs -p) || true
+  # - kill $(jobs -p) || true
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - kill $(jobs -p) || true
