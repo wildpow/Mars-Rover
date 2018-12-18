@@ -19,20 +19,23 @@ cache:
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build --debug
+  # - ./cc-test-reporter before-build
 
 script:
   # start server in the background
   # - npm start -- --silent &
+  - ./cc-test-reporter before-build
   # run all Cypress tests and record on the dashboard
   - npm run cy:run
   # after all tests finish running we need
   # to kill all background jobs (like "npm start &")
   # this avoids flake in Travis jobs
   # - kill $(jobs -p) || true
-  - ./cc-test-reporter upload-coverage --debug
+  # - ./cc-test-reporter upload-coverage --debug
+  # - ./cc-test-reporter format-coverage --debug
+  - ./cc-test-reporter after-build
 
 after_script:
-  - ./cc-test-reporter after-build --debug
+  # - ./cc-test-reporter after-build --debug
   # - kill $(jobs -p) || true
   # - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
