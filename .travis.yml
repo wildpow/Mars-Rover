@@ -5,8 +5,8 @@ node_js:
   - 10.8
 
 env:
-  - CC_TEST_REPORTER_ID=74c19894995d57f8f801ca63dedf61ba04d9d317f3b9daa4477f0979f4a06b7f
-
+  # - CC_TEST_REPORTER_ID=74c19894995d57f8f801ca63dedf61ba04d9d317f3b9daa4477f0979f4a06b7f
+  - CODECOV_TOKEN="220ef040-c506-476d-9c07-a12fd447f287"
 cache:
   # cache both npm modules and Cypress binary
   directories:
@@ -17,24 +17,25 @@ cache:
     # - npm ci
     # - npm run cy:verify
 before_script:
-  - yarn global add nyc
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build --debug
+  # - yarn global add nyc
+  # - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  # - chmod +x ./cc-test-reporter
+  # - ./cc-test-reporter before-build --debug
 
 script:
   # start server in the background
   # - npm start -- --silent &
   # run all Cypress tests and record on the dashboard
   # - npm run cy:run
-  - nyc --reporter=lcov --reporter=text-lcov yarn run cy:run
+  # - nyc --reporter=lcov --reporter=text-lcov yarn run cy:run
+  - yarn cy:run
   # - ./cc-test-reporter sum-coverage -o PATH coverage/lcov-report
   # - ./cc-test-reporter format-coverage --input-type lcov
   # - ./cc-test-reporter --debug
   # after all tests finish running we need
   # to kill all background jobs (like "npm start &")
   # this avoids flake in Travis jobs
-  # - kill $(jobs -p) || true
+  - kill $(jobs -p) || true
   # - ./cc-test-reporter upload-coverage --debug
   # - ./cc-test-reporter format-coverage --debug
   # - ./cc-test-reporter after-build
@@ -42,11 +43,11 @@ script:
 after_script:
   # - ./cc-test-reporter --debug
   # - cd coverage
-  - ./cc-test-reporter format-coverage -t lcov --prefix coverage/lcov.info
-    - ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json coverage/lcov.info # Format frontend coverage
+  # - ./cc-test-reporter format-coverage -t lcov --prefix coverage/lcov.info
+  #   - ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json coverage/lcov.info # Format frontend coverage
   # - ./cc-test-reporter format-coverage -t lcov
-  - ./cc-test-reporter upload-coverage --i ./coverage/lcov.info
-  - ./cc-test-reporter upload-coverage
+  # - ./cc-test-reporter upload-coverage --i ./coverage/lcov.info
+  # - ./cc-test-reporter upload-coverage
   # - ./cc-test-reporter upload-coverage --debug
   # - ./cc-test-reporter format-coverage --input-type lcov
   # - ./cc-test-reporter --debug
