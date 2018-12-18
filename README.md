@@ -1,5 +1,5 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/wildpow/Mars-Rover/badge.svg?targetFile=package.json)](https://snyk.io/test/github/wildpow/Mars-Rover?targetFile=package.json)
-[![Inline docs](http://inch-ci.org/github/wildpow/Mars-Rover.svg?branch=master)](http://inch-ci.org/github/wildpow/Mars-Rover) [![dependencies Status](https://david-dm.org/wildpow/Mars-Rover/status.svg)](https://david-dm.org/wildpow/Mars-Rover) [![Maintainability](https://api.codeclimate.com/v1/badges/e5f372509268f3bb499a/maintainability)](https://codeclimate.com/github/wildpow/Mars-Rover/maintainability) [![Build Status](https://travis-ci.com/wildpow/Mars-Rover.svg?branch=master)](https://travis-ci.com/wildpow/Mars-Rover)
+[![Inline docs](http://inch-ci.org/github/wildpow/Mars-Rover.svg?branch=master)](http://inch-ci.org/github/wildpow/Mars-Rover) [![dependencies Status](https://david-dm.org/wildpow/Mars-Rover/status.svg)](https://david-dm.org/wildpow/Mars-Rover) [![Build Status](https://travis-ci.com/wildpow/Mars-Rover.svg?branch=master)](https://travis-ci.com/wildpow/Mars-Rover) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Mars Rover
 
