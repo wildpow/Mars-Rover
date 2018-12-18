@@ -4,6 +4,9 @@ node_js:
   # Node 10.3+ includes npm@6 which has good "npm ci" command
   - 10.8
 
+env:
+  - CC_TEST_REPORTER_ID=74c19894995d57f8f801ca63dedf61ba04d9d317f3b9daa4477f0979f4a06b7f
+
 cache:
   # cache both npm modules and Cypress binary
   directories:
@@ -13,6 +16,10 @@ cache:
   override:
     # - npm ci
     - npm run cy:verify
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 script:
   # start server in the background
@@ -23,3 +30,6 @@ script:
   # to kill all background jobs (like "npm start &")
   # this avoids flake in Travis jobs
   - kill $(jobs -p) || true
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
