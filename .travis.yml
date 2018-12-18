@@ -32,5 +32,6 @@ script:
   # - kill $(jobs -p) || true
 
 after_script:
+  - ls
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
   - kill $(jobs -p) || true
