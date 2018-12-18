@@ -25,13 +25,12 @@ script:
   # start server in the background
   # - npm start -- --silent &
   # run all Cypress tests and record on the dashboard
-  - npm run cy:run && ls
+  - npm run cy:run
   # after all tests finish running we need
   # to kill all background jobs (like "npm start &")
   # this avoids flake in Travis jobs
   # - kill $(jobs -p) || true
 
 after_script:
-  - ls
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
   - kill $(jobs -p) || true
