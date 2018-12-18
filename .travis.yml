@@ -43,9 +43,10 @@ after_script:
   # - ./cc-test-reporter --debug
   # - cd coverage
   - ./cc-test-reporter format-coverage -t lcov --prefix coverage/lcov.info
+    - ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json coverage/lcov.info # Format frontend coverage
   # - ./cc-test-reporter format-coverage -t lcov
-  - ./cc-test-reporter upload-coverage --input ./coverage/lcov.info
-  - ./cc-test-reporter upload-coverage --debug
+  - ./cc-test-reporter upload-coverage --i ./coverage/lcov.info
+  - ./cc-test-reporter upload-coverage
   # - ./cc-test-reporter upload-coverage --debug
   # - ./cc-test-reporter format-coverage --input-type lcov
   # - ./cc-test-reporter --debug
