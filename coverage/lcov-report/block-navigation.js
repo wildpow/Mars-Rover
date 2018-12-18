@@ -1,7 +1,7 @@
 /* eslint-disable */
-var jumpToCode = (function init() {
+var jumpToCode = (function init () {
   // Classes of code we would like to highlight
-  var missingCoverageClasses = ['.cbranch-no', '.cstat-no', '.fstat-no'];
+  var missingCoverageClasses = [ '.cbranch-no', '.cstat-no', '.fstat-no' ];
 
   // We don't want to select elements that are direct descendants of another match
   var notSelector = ':not(' + missingCoverageClasses.join('):not(') + ') > '; // becomes `:not(a):not(b) > `
@@ -22,8 +22,7 @@ var jumpToCode = (function init() {
   function makeCurrent(index) {
     toggleClass(index);
     currentIndex = index;
-    missingCoverageElements
-      .item(index)
+    missingCoverageElements.item(index)
       .scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
   }
 
@@ -41,7 +40,7 @@ var jumpToCode = (function init() {
   function goToNext() {
     var nextIndex = 0;
 
-    if (typeof currentIndex === 'number' && currentIndex < missingCoverageElements.length - 1) {
+    if (typeof currentIndex === 'number' && currentIndex < (missingCoverageElements.length - 1)) {
       nextIndex = currentIndex + 1;
     }
 
@@ -61,5 +60,5 @@ var jumpToCode = (function init() {
         break;
     }
   };
-})();
+}());
 window.addEventListener('keydown', jumpToCode);

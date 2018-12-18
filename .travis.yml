@@ -27,7 +27,11 @@ script:
   # - npm start -- --silent &
   # run all Cypress tests and record on the dashboard
   # - npm run cy:run
-  - nyc --reporter=lcov yarn run cy:run
+  - nyc --reporter=lcov --reporter=text-lcov yarn run cy:run
+  - ./cc-test-reporter sum-coverage -o PATH coverage/lcov-report
+  - ./cc-test-reporter upload-coverage -i coverage/lcov-report
+  - ./cc-test-reporter format-coverage --input-type lcov
+  - ./cc-test-reporter --debug
   # after all tests finish running we need
   # to kill all background jobs (like "npm start &")
   # this avoids flake in Travis jobs
@@ -37,6 +41,12 @@ script:
   # - ./cc-test-reporter after-build
 
 after_script:
+  - ./cc-test-reporter --debug
+  - cd coverage
+  - ./cc-test-reporter sum-coverage -o PATH coverage/lcov-report
+  - ./cc-test-reporter upload-coverage -i coverage/lcov-report
+  - ./cc-test-reporter format-coverage --input-type lcov
+  - ./cc-test-reporter --debug
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
     # - ./cc-test-reporter after-build --debug
     # - kill $(jobs -p) || true
