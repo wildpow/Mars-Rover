@@ -9,13 +9,6 @@ const roverFinder = (board, starting, movement) => {
   let [currentX, currentY, direction] = starting;
   let currentDirection = roverFinderUtils.convertDirectionNum(direction);
 
-  const checkOutOfBounds = () => {
-    if (currentX > maxX || currentX < 0 || currentY > maxY || currentY < 0) {
-      return false;
-    }
-    return true;
-  };
-
   const updatePosition = () => {
     movement.forEach(move => {
       switch (move) {
@@ -45,8 +38,8 @@ const roverFinder = (board, starting, movement) => {
   updatePosition();
   const finalDirection = roverFinderUtils.convertDirectionBack(currentDirection);
   const finalResaults = [currentX, currentY, finalDirection];
-
-  if (checkOutOfBounds()) {
+  const isInBounds = roverFinderUtils.checkInBounds(currentX, currentY, maxX, maxY);
+  if (isInBounds) {
     return finalResaults;
   }
   return false;

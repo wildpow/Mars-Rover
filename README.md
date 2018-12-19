@@ -57,8 +57,12 @@ If you've already download the project zip archive then you can unarchive it and
 
 ## Mars Rover stack
 
+- [Node](https://nodejs.org/en/) for environment run time.
 - [Chalk](https://github.com/chalk/chalk) for terminal styling.
 - [Inquirer](https://github.com/SBoudrias/Inquirer.js/) for interactive command line interface.
+- [Travis CI](https://travis-ci.org/) for continuous integration.
+- [Snyk](https://snyk.io/) for dependence vulnerabilities check.
+- [Inch CI](https://inch-ci.org/) for documentation checking.
 
 ### Dev dependencies
 
@@ -76,4 +80,5 @@ If you've already download the project zip archive then you can unarchive it and
 
 This project uses [Cypress](https://www.cypress.io/) for testing. Either of these commands will start the test suite.
 
-- `yarn test` or `npm test`
+- For Cypress graphical UI: `yarn test` or `npm test`
+- For testing in terminal: `yarn cy:run` or `npm cy:run`

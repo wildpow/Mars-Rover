@@ -28,7 +28,12 @@ const convertDirectionBack = direction => {
       return null;
   }
 };
+// return false if current position is out of bounds
+const checkInBounds = (currentX, currentY, maxX, maxY) => {
+  if (currentX > maxX || currentX < 0 || currentY > maxY || currentY < 0) {
+    return false;
+  }
+  return true;
+};
 
-module.exports = { convertDirectionBack, convertDirectionNum };
-
-console.log(convertDirectionBack('z'));
+module.exports = { convertDirectionBack, convertDirectionNum, checkInBounds };

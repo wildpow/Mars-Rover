@@ -6,5 +6,8 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': ['error']
+  },
+  settings: {
+    'import/core-modules': ['rxjs']
   }
 };

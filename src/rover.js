@@ -8,7 +8,7 @@ const { from } = require('rxjs');
 const chalk = require('chalk');
 const uiElements = require('./uiElements');
 const roverFinder = require('./roverFinder');
-const { responsePrompt, resRoverStart } = require('./responses');
+const { responsePrompt, responseErrors } = require('./responses');
 
 const finalAnswers = {};
 
@@ -100,7 +100,7 @@ const questions = [
         .split(' '),
     // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
-      const response = resRoverStart(answer, finalAnswers);
+      const response = responseErrors(answer, finalAnswers);
       if (response.type === 'error') {
         return error(response.message);
       }
@@ -151,7 +151,7 @@ const questions = [
         .split(' '),
     // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
-      const response = resRoverStart(answer, finalAnswers);
+      const response = responseErrors(answer, finalAnswers);
       if (response.type === 'error') {
         return error(response.message);
       }

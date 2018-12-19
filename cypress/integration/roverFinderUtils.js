@@ -1,4 +1,8 @@
-import { convertDirectionNum, convertDirectionBack } from '../../src/roverFinderUtils';
+import {
+  convertDirectionNum,
+  convertDirectionBack,
+  checkInBounds
+} from '../../src/roverFinderUtils';
 
 describe('convertDirectionNum()', () => {
   it('should be a function', () => {
@@ -44,9 +48,27 @@ describe('convertDirectionBack()', () => {
     expect(convertDirectionBack(4)).to.equal('N');
   });
   it('should ruturn null if string', () => {
-    expect(convertDirectionBack('s')).to.equal(null);
+    expect(convertDirectionBack('d')).to.equal(null);
   });
   it('should ruturn null if negitive number', () => {
     expect(convertDirectionBack(-1)).to.equal(null);
+  });
+});
+
+describe('checkOutOfBounds()', () => {
+  it('should be a function', () => {
+    expect(checkInBounds).to.be.a('function');
+  });
+  it('should return true if current position is inBounds', () => {
+    expect(checkInBounds(3, 3, 5, 5)).to.equal(true);
+  });
+  it('should return true if current position is inBounds', () => {
+    expect(checkInBounds(300, 320, 500, 500)).to.equal(true);
+  });
+  it('should return false if current position is out of bounds', () => {
+    expect(checkInBounds(2, 2, 0, 0)).to.equal(false);
+  });
+  it('should return false if current position is out of bounds', () => {
+    expect(checkInBounds(-2, -2, 0, 0)).to.equal(false);
   });
 });

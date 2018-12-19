@@ -55,7 +55,7 @@ const responsePrompt = answers => {
 // Takes gobal savedAnswers object and current answer from starting point question and returns reponse object
 // reponse.type = 'success' or 'error'
 // response.message = 'string'
-const resRoverStart = (answer, finalAnswers) => {
+const responseErrors = (answer, finalAnswers) => {
   const [x, y, d] = answer;
   const startingX = parseInt(x, 10);
   const startingY = parseInt(y, 10);
@@ -97,4 +97,4 @@ const resRoverStart = (answer, finalAnswers) => {
   return response;
 };
 
-module.exports = { responsePrompt, resRoverStart };
+module.exports = { responsePrompt, responseErrors };
