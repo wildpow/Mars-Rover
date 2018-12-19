@@ -22,6 +22,9 @@ describe('convertDirectionNum()', () => {
   it('should return null with letters other than N,E,S,W', () => {
     expect(convertDirectionNum('B')).to.equal(null);
   });
+  it('should return null NEGITIVE NUMBER', () => {
+    expect(convertDirectionNum(-1)).to.equal(null);
+  });
 });
 
 describe('convertDirectionBack()', () => {
@@ -30,5 +33,20 @@ describe('convertDirectionBack()', () => {
   });
   it('should ruturn N if [input % 4 === 0]', () => {
     expect(convertDirectionBack(4)).to.equal('N');
+  });
+  it('should ruturn E if [input % 4 === 1]', () => {
+    expect(convertDirectionBack(4)).to.equal('N');
+  });
+  it('should ruturn S if [input % 4 === 2]', () => {
+    expect(convertDirectionBack(4)).to.equal('N');
+  });
+  it('should ruturn W if [input % 4 === 3]', () => {
+    expect(convertDirectionBack(4)).to.equal('N');
+  });
+  it('should ruturn null if string', () => {
+    expect(convertDirectionBack('s')).to.equal(null);
+  });
+  it('should ruturn null if negitive number', () => {
+    expect(convertDirectionBack(-1)).to.equal(null);
   });
 });
