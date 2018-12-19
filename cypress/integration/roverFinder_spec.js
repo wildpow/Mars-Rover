@@ -1,7 +1,7 @@
 import roverFinder from '../../src/roverFinder';
 
-describe('Is a function', () => {
-  it('exists', () => {
+describe('roverFinder()', () => {
+  it('should be a function', () => {
     expect(roverFinder).to.be.a('function');
   });
 
@@ -9,9 +9,7 @@ describe('Is a function', () => {
   it(`should equal [1, 3, 'N']`, () => {
     expect(res).to.deep.equal([1, 3, 'N']);
   });
-  // it('returns final rover position', () => {
-  //   expect(
-  //     roverFinder([5, 5], [1, 2, 'N'], ['L', 'M', 'L', 'M', 'L', 'M', 'L', 'M', 'M'])
-  //   ).to.equal([1, 3, 'N']);
-  // });
+  it('should return false', () => {
+    expect(roverFinder([0, 0], [0, 0, 'N'], ['M'])).to.equal(false);
+  });
 });
