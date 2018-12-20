@@ -34,7 +34,7 @@ If you've already downloaded the projects zip archive then unarchive it and skip
 
 ## How to play
 
-1. First input sets up the area for the rovers with X, Y coordinates. The bottom left of the area is 0,0 and input can no be negative.
+1. First input sets up the area for the rovers with X, Y coordinates. The bottom left of the area is 0,0 and the square directly north from (X, Y) is (x, y+1). Input can not be negative or greater then Mar's diameter of 4222 miles.
 
 - Input example: `5 5`
 
