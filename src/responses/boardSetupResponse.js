@@ -1,12 +1,13 @@
 /* eslint no-else-return: 2 */
 
+// Returns res object with message and type
 const boardSetupResponse = answer => {
   let [x, y] = answer;
   x = parseInt(x, 10);
   y = parseInt(y, 10);
   const response = { type: '', message: '' };
   if (answer.length !== 2) {
-    response.message = `--[INVALID INPUT: ${answer}]-- Please provide both an x and y cordinates.`;
+    response.message = `--[INVALID INPUT: ${answer}]-- Please provide both an x and y coordinates.`;
     response.type = 'error';
     return response;
   } else if (Number.isNaN(x)) {
@@ -18,11 +19,11 @@ const boardSetupResponse = answer => {
     response.type = 'error';
     return response;
   } else if (x < 0) {
-    response.message = `--[INVALID INPUT: ${x}]-- X can not be a negitive number.`;
+    response.message = `--[INVALID INPUT: ${x}]-- X can not be a negative number.`;
     response.type = 'error';
     return response;
   } else if (y < 0) {
-    response.message = `--[INVALID INPUT: ${y}]-- Y can not be a negitive number.`;
+    response.message = `--[INVALID INPUT: ${y}]-- Y can not be a negative number.`;
     response.type = 'error';
     return response;
   } else if (x > 4222) {

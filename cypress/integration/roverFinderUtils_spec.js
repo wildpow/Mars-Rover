@@ -30,7 +30,7 @@ describe('convertDirectionNum()', () => {
     it('should return null with letters other than N,E,S,W', () => {
       expect(convertDirectionNum('B')).to.equal(null);
     });
-    it('should return null NEGITIVE NUMBER', () => {
+    it('should return null negative number', () => {
       expect(convertDirectionNum(-1)).to.equal(null);
     });
   });
@@ -41,24 +41,24 @@ describe('convertDirectionBack()', () => {
     expect(convertDirectionBack).to.be.a('function');
   });
   describe(`returns N,E,S,W depending on number input`, () => {
-    it('should ruturn N if [input % 4 === 0]', () => {
+    it('should return N if [input % 4 === 0]', () => {
       expect(convertDirectionBack(4)).to.equal('N');
     });
-    it('should ruturn E if [input % 4 === 1]', () => {
+    it('should return E if [input % 4 === 1]', () => {
       expect(convertDirectionBack(4)).to.equal('N');
     });
-    it('should ruturn S if [input % 4 === 2]', () => {
+    it('should return S if [input % 4 === 2]', () => {
       expect(convertDirectionBack(4)).to.equal('N');
     });
-    it('should ruturn W if [input % 4 === 3]', () => {
+    it('should return W if [input % 4 === 3]', () => {
       expect(convertDirectionBack(4)).to.equal('N');
     });
   });
   describe('returns null if bad input', () => {
-    it('should ruturn null if string', () => {
+    it('should return null if string', () => {
       expect(convertDirectionBack('d')).to.equal(null);
     });
-    it('should ruturn null if negitive number', () => {
+    it('should return null if negative number', () => {
       expect(convertDirectionBack(-1)).to.equal(null);
     });
   });

@@ -17,12 +17,12 @@ const responsePrompt = ({
   switch (questionCount) {
     case 1:
       console.log(
-        `X and Y cordinates have been set for rover area to [X: ${board[0]} and Y: ${board[1]}]\n`
+        `X and Y coordinates have been set for rover area to [X: ${board[0]} and Y: ${board[1]}]\n`
       );
       break;
     case 2:
       console.log(
-        `Starting position cordinates have been set for rover 1 to [X: ${roverStart1[0]} Y: ${
+        `Starting position coordinates have been set for rover 1 to [X: ${roverStart1[0]} Y: ${
           roverStart1[1]
         } facing: ${roverStart1[2]}]\n`
       );
@@ -39,7 +39,7 @@ const responsePrompt = ({
       break;
     case 4:
       console.log(
-        `Starting position cordinates have been set for rover 2 to [X: ${roverStart2[0]} Y: ${
+        `Starting position coordinates have been set for rover 2 to [X: ${roverStart2[0]} Y: ${
           roverStart2[1]
         } facing: ${roverStart2[2]}]\n`
       );

@@ -4,13 +4,13 @@ eslint no-console: [0]
 const chalk = require('chalk');
 const roverFinder = require('../roverFinder');
 
-// Final response to  rover movement
+// Final response to rover movement
 const FinalResponse = state => {
   const rover1 = roverFinder(state.board, state.roverStart1, state.roverMove1);
   const rover2 = roverFinder(state.board, state.roverStart2, state.roverMove2);
   if (rover1) {
     console.log(
-      `${chalk.bold.green('Your Final Posistion of Rover One is')} ${chalk.bold.yellow(
+      `${chalk.bold.green('Your Final Position of Rover One is')} ${chalk.bold.yellow(
         rover1.join(' ')
       )}`
     );
@@ -19,7 +19,7 @@ const FinalResponse = state => {
   }
   if (rover2) {
     console.log(
-      `${chalk.bold.green('Your Final Posistion of Rover Two is')} ${chalk.bold.yellow(
+      `${chalk.bold.green('Your Final Position of Rover Two is')} ${chalk.bold.yellow(
         rover2.join(' ')
       )}`
     );

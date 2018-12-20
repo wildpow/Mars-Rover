@@ -68,9 +68,9 @@ class RoverFinder {
     this.convertDirectionNum();
     this.updatePosition();
     this.convertDirectionBack();
-    const finalResaults = [this.currentX, this.currentY, this.currentDirection];
+    const finalResults = [this.currentX, this.currentY, this.currentDirection];
 
-    if (this.checkOutOfBounds()) return finalResaults;
+    if (this.checkOutOfBounds()) return finalResults;
     return false;
   }
 

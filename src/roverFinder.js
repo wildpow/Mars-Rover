@@ -1,6 +1,6 @@
 const { checkInBounds, updatePosition } = require('./roverFinderUtils');
 
-// Inputs are already fomatted and parsed by the CLI
+// Inputs are already formatted and parsed by the CLI
 // board = [number, number]
 // starting = [number, number, letter (either N, E, S, W)]
 // movement = [...letter (either M, L, R)]

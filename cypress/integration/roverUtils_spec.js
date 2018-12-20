@@ -28,19 +28,19 @@ describe('validateCommands()', () => {
   it('should be a function', () => {
     expect(validateCommands).to.be.a('function');
   });
-  it('should return array empty array with no matchs with letters', () => {
+  it('should return array empty array with no matches with letters', () => {
     expect(res1.length).to.equal(0);
   });
-  it('should return array empty array with no matchs with numbers', () => {
+  it('should return array empty array with no matches with numbers', () => {
     expect(res2.length).to.equal(0);
   });
-  it('should return array empty array with no matchs special characters', () => {
+  it('should return array empty array with no matches special characters', () => {
     expect(res3.length).to.equal(0);
   });
   it('should return array all matching characters', () => {
     expect(res4.length).to.equal(4);
   });
-  it('should return array 5 matchs given 5 correct characters and 5 invalid ones', () => {
+  it('should return array 5 matches given 5 correct characters and 5 invalid ones', () => {
     expect(res5.length).to.equal(5);
   });
 });

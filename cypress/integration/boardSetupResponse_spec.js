@@ -11,7 +11,7 @@ describe(`boardSetupResponse()`, () => {
     const res4 = boardSetupResponse(['a', 'a', '2']);
     const res5 = boardSetupResponse([20000, 2222222]);
 
-    it(`Should with negitive numbers`, () => {
+    it(`Should with negative numbers`, () => {
       expect(res1.type).to.equal('error');
     });
     it(`Should with one input`, () => {

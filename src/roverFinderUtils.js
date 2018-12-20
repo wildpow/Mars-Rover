@@ -13,7 +13,7 @@ const convertDirectionNum = direction => {
       return null;
   }
 };
-// converts number back into letter directiom
+// converts number back into letter direction
 const convertDirectionBack = direction => {
   switch (direction % 4) {
     case 0:
@@ -36,7 +36,7 @@ const checkInBounds = (currentX, currentY, maxX, maxY) => {
   return true;
 };
 
-// takes movement array and starting array and returns new posisition array
+// takes movement array and starting array and returns new position array
 const updatePosition = (movement, starting) => {
   let [x, y, d] = starting;
   let direction = convertDirectionNum(d);

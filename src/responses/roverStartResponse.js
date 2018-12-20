@@ -3,8 +3,8 @@ eslint no-console: [0]
 */
 /* eslint no-else-return: 2 */
 
-// Take current board array and answer array returns a reponse object
-// reponse.type = 'success' or 'error'
+// Take current board array and answer array returns a response object
+// response.type = 'success' or 'error'
 // response.message = 'string'
 const roverStartResponse = (answer, board) => {
   const [x, y, d] = answer;
@@ -25,11 +25,11 @@ const roverStartResponse = (answer, board) => {
     response.type = 'error';
     return response;
   } else if (x < 0) {
-    response.message = `--[INVALID INPUT: ${startingX}]-- X can not be a negitive number.`;
+    response.message = `--[INVALID INPUT: ${startingX}]-- X can not be a negative number.`;
     response.type = 'error';
     return response;
   } else if (y < 0) {
-    response.message = `--[INVALID INPUT: ${startingY}]-- Y can not be a negitive number.`;
+    response.message = `--[INVALID INPUT: ${startingY}]-- Y can not be a negative number.`;
     response.type = 'error';
     return response;
   } else if (board[0] < startingX || board[1] < startingY) {

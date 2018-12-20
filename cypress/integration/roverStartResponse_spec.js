@@ -14,10 +14,10 @@ describe('boardSetupResponse() ', () => {
   const res6 = boardSetupResponse([1, 1]);
 
   describe(`boardSetupResponse() returns a res object with type 'error'`, () => {
-    it("should with negitive number' ", () => {
+    it("should with negative number' ", () => {
       expect(res1.type).to.equal('error');
     });
-    it("should with numbers greatter then Mar's diameter' ", () => {
+    it("should with numbers greater then Mar's diameter' ", () => {
       expect(res2.type).to.equal('error');
     });
     it(`should with letters`, () => {
