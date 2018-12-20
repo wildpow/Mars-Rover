@@ -60,12 +60,12 @@ If you've already downloaded the projects zip archive then unarchive it and skip
 - [Node](https://nodejs.org/en/) for environment run time.
 - [Chalk](https://github.com/chalk/chalk) for terminal styling.
 - [Inquirer](https://github.com/SBoudrias/Inquirer.js/) for interactive command line interface.
-- [Travis CI](https://travis-ci.org/) for continuous integration.
-- [Snyk](https://snyk.io/) for dependence vulnerabilities check.
-- [Inch CI](https://inch-ci.org/) for documentation checking.
 
 ### Dev dependencies
 
+- [Travis CI](https://travis-ci.org/) for continuous integration.
+- [Snyk](https://snyk.io/) for dependence vulnerabilities check.
+- [Inch CI](https://inch-ci.org/) for documentation checking.
 - [Cypress](https://www.cypress.io/) testing framework.
 - [Eslint](https://eslint.org/) code linting.
 - [Eslint-config-airbnb-base](https://github.com/airbnb/javascript) AirBnB style guide.
