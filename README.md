@@ -3,18 +3,18 @@
 
 # [Mars Rover](https://github.com/wildpow/Mars-Rover)
 
-A Mars rover simulation. By giving simple text commands you can control the enviroment and the movements of a squad of Mars rovers.
+A Mars rover simulation. By giving simple text commands you can control the environment and the movements of a squad of Mars rovers.
 
-## Setting up enviroment
+## Setting up environment
 
-Node and your prefered package manager are required to run this project. If you haven't installed these already you can get them at the following links:
+Node and your preferred package manager are required to run this project. If you haven't installed these already you can get them at the following links:
 
 - [Node](https://nodejs.org/en/ 'Node js') which comes bundled with [NPM](https://www.npmjs.com/ 'NPM package manager') package manager.
-- [Yarn](https://yarnpkg.com/en/) is an alternitive package manager for Node but you could use either.
+- [Yarn](https://yarnpkg.com/en/) is an alternative package manager for Node but you could use either.
 
 ## Setting up and running project
 
-If you've already download the project zip archive then you can unarchive it and skip step one.
+If you've already downloaded the projects zip archive then unarchive it and skip step one.
 
 1. Clone project from the terminal.
 
@@ -24,7 +24,7 @@ If you've already download the project zip archive then you can unarchive it and
 
 - `cd Mars-Rover`
 
-3. Install dependances with either commands.
+3. Install dependences with either commands.
 
 - `yarn` or `npm i`
 
@@ -34,18 +34,18 @@ If you've already download the project zip archive then you can unarchive it and
 
 ## How to play
 
-1. First input sets up the area for the rovers with X, Y coordinates. The bottom left of the area is 0,0 and input can no be negitive.
+1. First input sets up the area for the rovers with X, Y coordinates. The bottom left of the area is 0,0 and input can no be negative.
 
 - Input example: `5 5`
 
-2. Second input sets the starting position of the first rover and the direction the rover is facing. Input can not be less the or greater then the setup area.
+2. Second input sets the starting position of the first rover and the direction the rover is facing. Input can not be less the or greater than the setup area.
 
 - Input example: `1 2 N`
 
 3. Next input is rover one's movement. The rover understands movement commands in a continuous string:
 
 - `L` for turning left 90 degrees.
-- `R` for turninng right 90 degrees.
+- `R` for turning right 90 degrees.
 - `M` for move one space.
 - Input example: `LMLMLMLMM`
 
