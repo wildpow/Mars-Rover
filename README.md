@@ -1,7 +1,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/wildpow/Mars-Rover/badge.svg?targetFile=package.json)](https://snyk.io/test/github/wildpow/Mars-Rover?targetFile=package.json)
 [![Inline docs](http://inch-ci.org/github/wildpow/Mars-Rover.svg?branch=master)](http://inch-ci.org/github/wildpow/Mars-Rover) [![dependencies Status](https://david-dm.org/wildpow/Mars-Rover/status.svg)](https://david-dm.org/wildpow/Mars-Rover) [![Build Status](https://travis-ci.com/wildpow/Mars-Rover.svg?branch=master)](https://travis-ci.com/wildpow/Mars-Rover) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# Mars Rover
+# [Mars Rover](https://github.com/wildpow/Mars-Rover)
 
 A Mars rover simulation. By giving simple text commands you can control the enviroment and the movements of a squad of Mars rovers.
 
