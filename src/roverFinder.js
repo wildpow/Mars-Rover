@@ -1,4 +1,4 @@
-const roverFinderUtils = require('./roverFinderUtils');
+const { checkInBounds, updatePosition } = require('./roverFinderUtils');
 
 // Inputs are already fomatted and parsed by the CLI
 // board = [number, number]
@@ -6,41 +6,11 @@ const roverFinderUtils = require('./roverFinderUtils');
 // movement = [...letter (either M, L, R)]
 const roverFinder = (board, starting, movement) => {
   const [maxX, maxY] = board;
-  let [currentX, currentY, direction] = starting;
-  let currentDirection = roverFinderUtils.convertDirectionNum(direction);
-
-  const updatePosition = () => {
-    movement.forEach(move => {
-      switch (move) {
-        case 'M':
-          if (currentDirection % 4 === 0) {
-            currentY += 1;
-          } else if (currentDirection % 4 === 1) {
-            currentX += 1;
-          } else if (currentDirection % 4 === 2) {
-            currentY -= 1;
-          } else if (currentDirection % 4 === 3) {
-            currentX -= 1;
-          }
-          break;
-        case 'L':
-          currentDirection += 3;
-          break;
-        case 'R':
-          currentDirection += 1;
-          break;
-        default:
-          break;
-      }
-    });
-  };
-
-  updatePosition();
-  const finalDirection = roverFinderUtils.convertDirectionBack(currentDirection);
-  const finalResaults = [currentX, currentY, finalDirection];
-  const isInBounds = roverFinderUtils.checkInBounds(currentX, currentY, maxX, maxY);
+  const finalPosition = updatePosition(movement, starting);
+  const [endingX, endingY, endingDirection] = finalPosition;
+  const isInBounds = checkInBounds(endingX, endingY, maxX, maxY);
   if (isInBounds) {
-    return finalResaults;
+    return [endingX, endingY, endingDirection];
   }
   return false;
 };

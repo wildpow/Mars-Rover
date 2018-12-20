@@ -1,7 +1,8 @@
 import {
   convertDirectionNum,
   convertDirectionBack,
-  checkInBounds
+  checkInBounds,
+  updatePosition
 } from '../../src/roverFinderUtils';
 
 describe('convertDirectionNum()', () => {
@@ -55,7 +56,7 @@ describe('convertDirectionBack()', () => {
   });
 });
 
-describe('checkOutOfBounds()', () => {
+describe('checkInBounds()', () => {
   it('should be a function', () => {
     expect(checkInBounds).to.be.a('function');
   });
@@ -70,5 +71,19 @@ describe('checkOutOfBounds()', () => {
   });
   it('should return false if current position is out of bounds', () => {
     expect(checkInBounds(-2, -2, 0, 0)).to.equal(false);
+  });
+});
+
+describe('updatePosition()', () => {
+  const answer1 = updatePosition(['L', 'M', 'L', 'M', 'L', 'M', 'L', 'M', 'M'], [1, 2, 'N']);
+  const answer2 = updatePosition(['M', 'M', 'R', 'M', 'M', 'R', 'M', 'R', 'R', 'M'], [3, 3, 'E']);
+  it('should be a function', () => {
+    expect(updatePosition).to.be.a('function');
+  });
+  it('should return [1,3,N]', () => {
+    expect(answer1).to.deep.equal([1, 3, 'N']);
+  });
+  it('should return [5,1,E]', () => {
+    expect(answer2).to.deep.equal([5, 1, 'E']);
   });
 });

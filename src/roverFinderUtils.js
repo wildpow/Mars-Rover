@@ -36,4 +36,41 @@ const checkInBounds = (currentX, currentY, maxX, maxY) => {
   return true;
 };
 
-module.exports = { convertDirectionBack, convertDirectionNum, checkInBounds };
+// takes movement array and starting array and returns new posisition array
+const updatePosition = (movement, starting) => {
+  let [x, y, d] = starting;
+  let direction = convertDirectionNum(d);
+  movement.forEach(move => {
+    switch (move) {
+      case 'M':
+        if (direction % 4 === 0) {
+          y += 1;
+        } else if (direction % 4 === 1) {
+          x += 1;
+        } else if (direction % 4 === 2) {
+          y -= 1;
+        } else if (direction % 4 === 3) {
+          x -= 1;
+        }
+        break;
+      case 'L':
+        direction += 3;
+        break;
+      case 'R':
+        direction += 1;
+        break;
+      default:
+        break;
+    }
+  });
+  const newDirection = convertDirectionBack(direction);
+  return [x, y, newDirection];
+};
+
+console.log(updatePosition(['n'], [1, 2, 'N']));
+module.exports = {
+  checkInBounds,
+  updatePosition,
+  convertDirectionNum,
+  convertDirectionBack
+};
