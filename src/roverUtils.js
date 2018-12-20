@@ -1,5 +1,5 @@
 // Returns True if numbers exist in given array.
-const numberCheck = answer => {
+const hasOnlyLetters = answer => {
   const check = answer.every(item => {
     const convertedItem = parseInt(item, 10);
     return Number.isNaN(convertedItem);
@@ -31,4 +31,4 @@ const saveRoverStart = answer => {
   return [x, y, d];
 };
 
-module.exports = { numberCheck, validateCommands, saveBoard, saveRoverStart };
+module.exports = { hasOnlyLetters, validateCommands, saveBoard, saveRoverStart };

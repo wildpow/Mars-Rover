@@ -67,7 +67,6 @@ const updatePosition = (movement, starting) => {
   return [x, y, newDirection];
 };
 
-console.log(updatePosition(['n'], [1, 2, 'N']));
 module.exports = {
   checkInBounds,
   updatePosition,

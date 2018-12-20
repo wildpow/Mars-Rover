@@ -1,0 +1,10 @@
+const state = {
+  board: [5, 5],
+  roverStart1: [1, 2, 'N'],
+  roverStart2: [3, 3, 'E'],
+  roverMove1: ['L', 'M', 'L', 'M', 'L', 'M', 'L', 'M', 'M'],
+  roverMove2: ['M', 'M', 'R', 'M', 'M', 'R', 'M', 'R', 'R', 'M'],
+  questionCount: ''
+};
+
+module.exports = state;

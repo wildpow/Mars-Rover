@@ -4,8 +4,9 @@ eslint no-console: [0]
 */
 
 const chalk = require('chalk');
-const { numberCheck, validateCommands, saveBoard, saveRoverStart } = require('./roverUtils');
+const { hasOnlyLetters, validateCommands, saveBoard, saveRoverStart } = require('./roverUtils');
 const roverStartResponse = require('./responses/roverStartResponse');
+const boardSetupResponse = require('./responses/boardSetupResponse');
 
 const error = chalk.bold.red;
 const state = {
@@ -28,27 +29,9 @@ const questions = [
     filter: answer => answer.trim().split(' '),
     // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
-      let [x, y] = answer;
-      x = parseInt(x, 10);
-      y = parseInt(y, 10);
-      if (answer.length !== 2) {
-        return error(`--[INVALID INPUT: ${answer}]-- Please provide both an x and y cordinates.`);
-      } else if (Number.isNaN(x)) {
-        return error(`--[INVALID INPUT: ${answer[0]}]-- X needs to be a number.`);
-      } else if (Number.isNaN(y)) {
-        return error(`--[INVALID INPUT: ${answer[1]}]-- Y needs to be a number.`);
-      } else if (x < 0) {
-        return error(`--[INVALID INPUT: ${x}]-- X can not be a negitive number.`);
-      } else if (y < 0) {
-        return error(`--[INVALID INPUT: ${y}]-- Y can not be a negitive number.`);
-      } else if (x > 4222) {
-        return error(
-          `--[INVALID INPUT: ${x}]-- X can not be bigger then Mar's diameter of 4222 miles.`
-        );
-      } else if (y > 4222) {
-        return error(
-          `--[INVALID INPUT: ${y}]--\n X can not be bigger then Mar's diameter of 4222 miles.`
-        );
+      const response = boardSetupResponse(answer);
+      if (response.type === 'error') {
+        return error(response.message);
       }
       state.board = saveBoard(answer);
       state.questionCount = 1;
@@ -92,7 +75,7 @@ const questions = [
         .split(''),
     // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
-      const checkForNumbers = numberCheck(answer);
+      const checkForNumbers = hasOnlyLetters(answer);
       const validCommands = validateCommands(answer);
       if (answer.length === 0) {
         return error(`--[INVALID INPUT: ${answer}]-- Command can not be blank`);
@@ -141,7 +124,7 @@ const questions = [
         .split(''),
     // validate() returns false if answer doesn't meet criteria and true if it does
     validate: answer => {
-      const checkForNumbers = numberCheck(answer);
+      const checkForNumbers = hasOnlyLetters(answer);
       const validCommands = validateCommands(answer);
       if (answer.length === 0) {
         return error(`--[INVALID INPUT: ${answer}]-- Command can not be blank`);
