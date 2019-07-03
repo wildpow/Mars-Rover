@@ -16,7 +16,9 @@
     "test": "cypress open",
     "start": "node src/rover.js",
     "cy:verify": "cypress verify",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -25,6 +27,8 @@
   },
   "dependencies": {
     "chalk": "^2.4.1",
-    "inquirer": "^6.2.1"
-  }
+    "inquirer": "^6.2.1",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
